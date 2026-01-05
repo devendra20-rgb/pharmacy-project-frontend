@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Important for news sites
+Allow: /api/
+Allow: /news/
+Allow: /article/
+
+# Block useless paths (optional but recommended)
+Disallow: /admin/
+Disallow: /login/
+
+Sitemap: https://www.headlines24x7.com/sitemap.xml
