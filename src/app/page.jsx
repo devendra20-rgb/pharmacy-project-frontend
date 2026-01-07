@@ -13,14 +13,22 @@ import {
   healthTopics,
   latestNews,
   videoContent,
+  specialSectionData,
+  trendingTopics,
+  featuredStories,
+  contributorsData,
   blogPosts,
   healthTools,
+  mainTools,
+  secondaryTools,
   conditions,
   doctors,
 } from "../data/mockData";
 
 const Home = () => {
   const [email, setEmail] = React.useState("");
+  const mainStory = featuredArticles[0];
+  const sideStories = featuredArticles.slice(1, 4);
 
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
@@ -30,38 +38,71 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-
       {/* Hero Section with Featured Articles */}
-      <section className="bg-white py-12">
+      <section className="py-12 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredArticles.map((article) => (
-              <Link key={article.id} href={`/article/${article.id}`}>
-                <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 h-full group">
-                  <div className="relative overflow-hidden">
+          {/* Section Heading - Normal clean style */}
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 tracking-widest uppercase border-b-2 border-teal-600 w-fit pb-1  ">
+            Today's Top Stories
+          </h2>
+
+          <div className="flex flex-col gap-12">
+            {/* UP: Main Story - Balanced and Normal Text */}
+            <div className="w-full">
+              <Link href={`/article/${mainStory.id}`} className="group block">
+                <div className="flex flex-col lg:flex-row gap-8 items-start">
+                  {/* Image Section */}
+                  <div className="w-full lg:w-[60%] overflow-hidden rounded-sm">
                     <img
-                      src={article.image}
-                      alt={article.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      src={mainStory.image}
+                      alt={mainStory.title}
+                      className="w-full h-[300px] md:h-[380px] object-cover transition-opacity duration-300 group-hover:opacity-90"
                     />
-                    <Badge className="absolute top-3 left-3 bg-teal-600 text-white">
-                      {article.category}
-                    </Badge>
                   </div>
-                  <CardContent className="p-4">
-                    <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-teal-600 transition-colors">
-                      {article.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 line-clamp-2 mb-2">
-                      {article.description}
+                  {/* Text Section - Normal font weights */}
+                  <div className="w-full lg:w-[40%] space-y-4 pt-1">
+                    <h1 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight group-hover:text-teal-600 transition-colors">
+                      {mainStory.title}
+                    </h1>
+                    <p className="text-[16px] text-gray-600 leading-relaxed font-normal">
+                      {mainStory.description}
                     </p>
-                    <span className="text-xs text-gray-500">
-                      {article.readTime}
-                    </span>
-                  </CardContent>
-                </Card>
+                    <div className="pt-2 text-[12px] font-semibold text-gray-400 uppercase tracking-tight">
+                      {mainStory.readTime}
+                    </div>
+                  </div>
+                </div>
               </Link>
-            ))}
+            </div>
+
+            {/* DOWN: Three Stories - Clean Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-10 border-t border-gray-100">
+              {sideStories.map((article) => (
+                <Link
+                  key={article.id}
+                  href={`/article/${article.id}`}
+                  className="group block"
+                >
+                  <div className="flex flex-col gap-4">
+                    <div className="w-full aspect-[16/9] overflow-hidden rounded-sm bg-gray-100">
+                      <img
+                        src={article.image}
+                        alt={article.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="text-[17px] font-bold text-gray-900 leading-snug group-hover:text-teal-600 transition-colors line-clamp-2">
+                        {article.title}
+                      </h3>
+                      <div className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">
+                        {article.readTime}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -101,25 +142,259 @@ const Home = () => {
       </section>
 
       {/* Health Topics */}
-      <section className="py-12 bg-white">
+      {/* Top Health Topics Section - Modern Arrow Style */}
+      <section className="py-16 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-8">
+          {/* Section Header with View All */}
+          <div className="flex justify-between items-center mb-10">
             <h2 className="text-3xl font-bold text-gray-900">
               Top Health Topics
             </h2>
             <Link
               href="/health-topics"
-              className="text-teal-600 hover:text-teal-700 font-medium flex items-center"
+              className="text-teal-600 hover:text-teal-700 font-bold flex items-center text-xs uppercase tracking-widest transition-colors"
             >
               View All <ArrowRight className="w-4 h-4 ml-1" />
             </Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+
+          {/* Topics Grid - Premium Spacing */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {healthTopics.map((topic, index) => (
               <Link
                 key={index}
                 href={`/topics/${topic.toLowerCase().replace(/\s+/g, "-")}`}
-                className="px-4 py-3 bg-gray-50 hover:bg-teal-50 rounded-lg text-sm font-medium text-gray-700 hover:text-teal-700 transition-colors text-center border border-gray-200 hover:border-teal-300"
+                className="group flex items-center p-4 bg-gray-50/50 hover:bg-teal-50 border border-gray-100 hover:border-teal-200 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md"
+              >
+                {/* MediLAB Theme Arrow */}
+                <div className="flex items-center justify-center w-6 h-6 mr-3 rounded-full bg-white border border-gray-100 group-hover:border-teal-300 group-hover:bg-teal-600 transition-all duration-300">
+                  <span className="text-teal-600 group-hover:text-white text-sm font-bold transition-colors">
+                    →
+                  </span>
+                </div>
+
+                {/* Topic Name */}
+                <span className="text-[15px] font-bold text-gray-700 group-hover:text-teal-700 transition-colors">
+                  {topic}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Latest News & Articles */}
+      {/* Latest News & Articles - WebMD Health News Style */}
+      <section className="py-16 bg-gray-50 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header with Large Heading and View All */}
+          <div className="flex justify-between items-center mb-10 border-b border-gray-200 pb-4">
+            <h2 className="text-3xl font-bold text-gray-900">Health News</h2>
+            <Link
+              href="/news"
+              className="text-teal-600 hover:text-teal-700 font-bold flex items-center text-sm uppercase tracking-widest transition-colors"
+            >
+              View All <ArrowRight className="w-4 h-4 ml-1" />
+            </Link>
+          </div>
+
+          <div className="flex flex-col gap-12">
+            {/* UP: Featured News Story (Side-by-side Layout) */}
+            {latestNews.length > 0 && (
+              <Link
+                href={`/news/${latestNews[0].id}`}
+                className="group block bg-white p-6 rounded-sm shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="flex flex-col md:flex-row gap-10 items-center">
+                  {/* Image Box */}
+                  <div className="w-full md:w-[45%] overflow-hidden rounded-sm">
+                    <img
+                      src={latestNews[0].image}
+                      alt={latestNews[0].title}
+                      className="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  {/* Text Content */}
+                  <div className="w-full md:w-[55%] space-y-4">
+                    <h3 className="text-2xl md:text-4xl font-bold text-gray-900 leading-tight group-hover:text-teal-700 transition-colors">
+                      {latestNews[0].title}
+                    </h3>
+                    <p className="text-lg text-gray-600 leading-relaxed font-normal line-clamp-3">
+                      {latestNews[0].excerpt}
+                    </p>
+                    <div className="pt-2 text-[12px] font-semibold text-gray-400 uppercase tracking-widest">
+                      By {latestNews[0].author} • {latestNews[0].date}
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            )}
+
+            {/* DOWN: Three Related News Items in a Row */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {latestNews.slice(1, 4).map((news, index) => (
+                <Link
+                  key={news.id}
+                  href={`/news/${news.id}`}
+                  className={`group block bg-white p-5 rounded-sm shadow-sm hover:shadow-md transition-all border-l-4 border-transparent hover:border-teal-500 ${
+                    index < 2 ? "md:border-r md:border-gray-100" : ""
+                  }`}
+                >
+                  <div className="flex flex-col h-full justify-between">
+                    <h4 className="text-[17px] font-bold text-gray-900 leading-snug group-hover:text-teal-700 transition-colors line-clamp-3 mb-4">
+                      {news.title}
+                    </h4>
+                    <div className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest">
+                      {news.date}
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Spotlight Section - Full Teal Theme */}
+      <section className="py-16 bg-[#0d9488] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center mb-8 border-b border-white/30 pb-4">
+            <h2 className="text-[15px] font-black tracking-widest uppercase text-white">
+              Video Spotlight
+            </h2>
+            <Link
+              href="/videos"
+              className="text-white hover:text-teal-100 font-bold text-xs uppercase tracking-widest transition-colors flex items-center"
+            >
+              View All <ArrowRight className="w-4 h-4 ml-1" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            {/* LEFT: Main Featured Video */}
+            <div className="lg:col-span-7 group cursor-pointer">
+              <div className="relative overflow-hidden rounded-sm mb-6 aspect-video shadow-2xl">
+                <img
+                  src={videoContent[0].thumbnail}
+                  alt={videoContent[0].title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                {/* UPDATED: Pure White Button with Teal Icon for best look */}
+                <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
+                  <div className="w-16 h-16 bg-white rounded-sm flex items-center justify-center group-hover:bg-teal-50 transition-all shadow-xl">
+                    <Play className="w-8 h-8 text-[#0d9488] fill-[#0d9488]" />
+                  </div>
+                </div>
+                <Badge className="absolute bottom-4 right-4 bg-black/80 text-white border-none rounded-none text-[10px] font-bold">
+                  {videoContent[0].duration}
+                </Badge>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-black leading-tight hover:text-teal-100 transition-colors">
+                {videoContent[0].title}
+              </h3>
+            </div>
+
+            {/* RIGHT: Sidebar Videos */}
+            <div className="lg:col-span-5 space-y-6 lg:pl-10 lg:border-l lg:border-white/20">
+              {videoContent.slice(1, 5).map((video) => (
+                <Link
+                  key={video.id}
+                  href="#"
+                  className="group flex gap-5 items-center"
+                >
+                  <div className="relative w-40 h-24 shrink-0 overflow-hidden rounded-sm shadow-md">
+                    <img
+                      src={video.thumbnail}
+                      alt={video.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    {/* UPDATED: White Mini Play Button */}
+                    <div className="absolute inset-0 bg-black/5 flex items-center justify-center">
+                      <div className="w-10 h-10 bg-white/90 rounded-sm flex items-center justify-center shadow-md">
+                        <Play
+                          size={16}
+                          className="text-[#0d9488] fill-[#0d9488]"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-[16px] font-bold leading-snug group-hover:text-teal-100 transition-colors line-clamp-2">
+                      {video.title}
+                    </h4>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SPECIAL SECTION - WebMD Style */}
+      <section className="py-16 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="mb-10 border-b border-gray-200 pb-4">
+            <h2 className="text-3xl font-bold text-gray-900">
+              Special Section
+            </h2>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {specialSectionData.map((item) => (
+              <Link
+                key={item.id}
+                href={item.link}
+                className="group flex flex-col h-full"
+              >
+                {/* Image Box */}
+                <div className="relative overflow-hidden rounded-sm aspect-video mb-6">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Content Box */}
+                <div className="flex flex-col space-y-3">
+                  {/* Small Tagline */}
+                  <span className="text-[12px] font-bold text-gray-400">
+                    {item.tagline}
+                  </span>
+                  {/* Title - Teal Hover Effect */}
+                  <h3 className="text-[20px] font-black text-gray-900 leading-tight group-hover:text-teal-700 transition-colors">
+                    {item.title}
+                  </h3>
+                  {/* Description */}
+                  <p className="text-[15px] text-gray-600 leading-relaxed font-medium">
+                    {item.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TRENDING TOPICS - Full Teal Style */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-6 border-b border-gray-100 pb-2">
+            {/* Heading Teal */}
+            <h2 className="text-3xl font-bold text-gray-900">
+              Trending Topics
+            </h2>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {trendingTopics.map((topic, index) => (
+              <Link
+                key={index}
+                href={`/search?q=${topic}`}
+                /* Changed Blue to Teal */
+                className="px-5 py-2.5 rounded-full border border-gray-100 bg-gray-50/50 text-[14px] font-medium text-gray-700 hover:bg-teal-600 hover:border-teal-600 hover:text-white transition-all shadow-sm"
               >
                 {topic}
               </Link>
@@ -128,100 +403,149 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Latest News & Articles */}
-      <section className="py-12 bg-gray-50">
+      {/* FEATURED STORIES - 3 Column Layout */}
+      <section className="py-12 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
-            Latest News & Articles
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {latestNews.map((news) => (
-              <Link key={news.id} href={`/news/${news.id}`}>
-                <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 h-full group">
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={news.image}
-                      alt={news.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <CardContent className="p-4">
-                    <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-teal-600 transition-colors">
-                      {news.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 line-clamp-2 mb-3">
-                      {news.excerpt}
-                    </p>
-                    <div className="text-xs text-gray-500 space-y-1">
-                      <p>By {news.author}</p>
-                      <p>Medically Reviewed by {news.medicalReview}</p>
-                      <p className="text-gray-400">{news.date}</p>
-                    </div>
-                  </CardContent>
-                </Card>
+          <div className="mb-8 border-b border-gray-100 pb-2">
+            {/* Heading Teal */}
+            <h2 className="text-3xl font-bold text-gray-900">
+              Featured Stories
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {featuredStories.map((story) => (
+              <Link key={story.id} href={story.link} className="group block">
+                <div className="relative overflow-hidden rounded-sm aspect-[4/3] mb-5 bg-gray-100">
+                  <img
+                    src={story.image}
+                    alt={story.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
+                <div className="space-y-3">
+                  {/* Title Hover Teal */}
+                  <h3 className="text-[18px] font-black text-gray-900 leading-snug group-hover:text-teal-700 transition-colors">
+                    {story.title}
+                  </h3>
+                  <p className="text-[15px] text-gray-500 leading-relaxed font-medium">
+                    {story.description}
+                  </p>
+                </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Video Content */}
-      <section className="py-12 bg-white">
+      {/* PATIENT AND EXPERT CONTRIBUTORS SECTION */}
+      {/* PATIENT AND EXPERT CONTRIBUTORS SECTION - Balanced Spacing */}
+      <section className="py-16 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
-            Health Videos
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {videoContent.map((video) => (
-              <div key={video.id} className="group cursor-pointer">
-                <Card className="overflow-hidden hover:shadow-lg transition-all duration-300">
-                  <div className="relative">
-                    <img
-                      src={video.thumbnail}
-                      alt={video.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <Play className="w-8 h-8 text-teal-600 ml-1" />
-                      </div>
-                    </div>
-                    <Badge className="absolute bottom-3 right-3 bg-black/70 text-white">
-                      {video.duration}
-                    </Badge>
+          {/* Heading Section - Bold MediLAB Style */}
+          <div className="flex justify-between items-baseline mb-10 pb-4 border-b border-gray-100">
+            <h2 className="text-3xl font-black text-gray-900 tracking-tight">
+              Patient and Expert Contributors
+            </h2>
+            <Link
+              href="/contributors"
+              className="text-teal-600 hover:text-teal-700 font-bold text-[13px] flex items-center gap-1 uppercase tracking-widest"
+            >
+              View All <span className="text-lg">→</span>
+            </Link>
+          </div>
+
+          {/* Grid with Gaps: Ab images ke beech gap dikhega */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {contributorsData.map((item) => (
+              <Link
+                key={item.id}
+                href={item.link}
+                className="group flex flex-col h-full bg-white border border-gray-100 hover:shadow-lg transition-all duration-300 rounded-sm overflow-hidden"
+              >
+                {/* Full Bleed Image - Aspect Adjusted */}
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#eff3f8]">
+                  {/* Category Tag */}
+                  <div className="absolute top-3 left-3 px-2 py-1 bg-white/90 text-[10px] font-black text-teal-700 uppercase tracking-tighter shadow-sm z-10">
+                    {item.category}
                   </div>
-                  <CardContent className="p-4">
-                    <h3 className="font-semibold text-gray-900 line-clamp-2 group-hover:text-teal-600 transition-colors">
-                      {video.title}
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Text Content - Clear and Compact */}
+                <div className="p-5 flex flex-col flex-1 text-center">
+                  <div className="mb-4">
+                    <h3 className="text-[17px] font-black text-gray-900 leading-tight">
+                      {item.name}
                     </h3>
-                  </CardContent>
-                </Card>
-              </div>
+                    <p className="text-[12px] text-gray-400 font-bold mt-1 uppercase tracking-tighter">
+                      {item.role}
+                    </p>
+                  </div>
+
+                  {/* Title with Inline Arrow */}
+                  <div className="pt-4 border-t border-gray-100 text-left">
+                    <h4 className="text-[14px] font-bold text-gray-800 group-hover:text-teal-700 leading-snug transition-colors">
+                      {item.title}
+                      <span className="inline-flex ml-2 text-teal-600 text-lg transition-transform group-hover:translate-x-1">
+                        →
+                      </span>
+                    </h4>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* Health Tools */}
-      <section className="py-12 bg-teal-50">
+      {/* TOOLS, TRACKERS & CALCULATORS SECTION */}
+      <section className="py-16 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
-            Health Tools & Calculators
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {healthTools.map((tool) => (
-              <Link key={tool.id} href={tool.url}>
-                <Card className="hover:shadow-lg transition-all duration-300 group h-full">
-                  <CardContent className="p-6 text-center">
-                    <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-teal-600 transition-colors">
-                      <div className="w-6 h-6 bg-teal-600 group-hover:bg-white transition-colors rounded" />
-                    </div>
-                    <h3 className="font-semibold text-sm text-gray-900 mb-1 group-hover:text-teal-600 transition-colors">
-                      {tool.title}
-                    </h3>
-                    <p className="text-xs text-gray-600">{tool.description}</p>
-                  </CardContent>
-                </Card>
+          {/* Section Header */}
+          <div className="mb-12 border-b border-gray-100 pb-2 text-left">
+            <h2 className="text-3xl font-bold text-gray-900">
+              Tools, Trackers & Calculators
+            </h2>
+          </div>
+
+          {/* Top Row: Main Illustration Tools */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-16 px-4">
+            {mainTools.map((tool) => (
+              <Link
+                key={tool.id}
+                href={tool.url}
+                className="group flex flex-col items-center text-center"
+              >
+                <div className="relative w-full aspect-square mb-6 overflow-hidden rounded-full bg-gray-50 flex items-center justify-center p-4">
+                  <img
+                    src={tool.image}
+                    alt={tool.title}
+                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <h3 className="text-[16px] font-bold text-gray-900 group-hover:text-teal-700 leading-tight transition-colors">
+                  {tool.title}
+                </h3>
+              </Link>
+            ))}
+          </div>
+
+          {/* Bottom Row: Secondary Pill Buttons */}
+          <div className="flex flex-wrap justify-center gap-4 pt-10 border-t border-gray-100">
+            {secondaryTools.map((tool, index) => (
+              <Link
+                key={index}
+                href={tool.url}
+                className="px-6 py-2 bg-gray-50 hover:bg-teal-50 text-[13px] font-bold text-teal-800 border border-gray-100 hover:border-teal-200 rounded-full transition-all shadow-sm"
+              >
+                {tool.name}
               </Link>
             ))}
           </div>
@@ -369,30 +693,49 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Conditions List */}
-      <section className="py-12 bg-white">
+      {/* Browse All Conditions Section - WebMD Style */}
+
+      {/* Conditions Grid Container */}
+      {/* Health A - Z Section - MediLAB Teal Theme */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900">
-              Browse All Conditions
+          {/* Section Header with View All - Teal Underline */}
+          <div className="flex justify-between items-center mb-6 border-b border-gray-100 pb-2">
+            <h2 className="text-[18px] font-black text-gray-900 tracking-wider uppercase">
+              Health A - Z
             </h2>
             <Link
               href="/conditions"
-              className="text-teal-600 hover:text-teal-700 font-medium flex items-center"
+              className="text-teal-600 hover:text-teal-700 hover:underline font-bold text-sm"
             >
-              View All <ArrowRight className="w-4 h-4 ml-1" />
+              View All
             </Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
-            {conditions.slice(0, 20).map((condition, index) => (
-              <Link
-                key={index}
-                href={condition.url}
-                className="text-sm text-teal-600 hover:text-teal-700 hover:underline font-medium"
-              >
-                {condition.name}
-              </Link>
-            ))}
+
+          {/* Conditions Grid Container - Light Teal Background */}
+          <div className="bg-teal-50/30 rounded-sm p-8 border-t-2 border-teal-600/20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-0">
+              {conditions.map((condition, index) => (
+                <div
+                  key={index}
+                  className="border-b border-teal-900/5 last:border-0 lg:[&:nth-last-child(-n+4)]:border-0"
+                >
+                  <Link
+                    href={condition.url}
+                    className="flex items-center group py-4 transition-all"
+                  >
+                    {/* MediLAB Teal Arrow */}
+                    <span className="text-teal-600 mr-3 font-bold text-lg group-hover:translate-x-1 transition-transform">
+                      →
+                    </span>
+                    {/* Condition Name - Teal Hover Effect */}
+                    <span className="text-[15px] font-medium text-gray-800 group-hover:text-teal-700">
+                      {condition.name}
+                    </span>
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

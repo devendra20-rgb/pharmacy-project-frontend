@@ -8,7 +8,7 @@ import { Card, CardContent } from '../../components/ui/card';
 import { Input } from '../../components/ui/input';
 import { Badge } from '../../components/ui/badge';
 import {
-  featuredArticles,
+  // featuredArticles,
   livingHealthyCategories,
   healthTopics,
   latestNews,
@@ -31,7 +31,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section with Featured Articles */}
-      <section className="bg-white py-12">
+      {/* <section className="bg-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredArticles.map((article) => (
@@ -61,7 +61,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Living Healthy Section */}
       <section className="py-12 bg-gradient-to-b from-white to-gray-50">
@@ -254,7 +254,7 @@ const Home = () => {
       {/* Newsletter Signup */}
       <section className="py-16 bg-gradient-to-r from-teal-600 to-teal-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Free MediLab Newsletters</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">Free WebMD Newsletters</h2>
           <p className="text-teal-100 mb-8 text-lg">
             Doctor-approved health and wellness information delivered to your inbox
           </p>
@@ -272,7 +272,7 @@ const Home = () => {
             </Button>
           </form>
           <p className="text-xs text-teal-100 mt-4">
-            By clicking Subscribe, I agree to the MediLab Terms & Conditions and Privacy Policy
+            By clicking Subscribe, I agree to the WebMD Terms & Conditions and Privacy Policy
           </p>
         </div>
       </section>

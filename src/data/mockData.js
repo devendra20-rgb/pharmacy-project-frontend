@@ -245,7 +245,7 @@ export const videoContent = [
   {
     id: 3,
     title: "Ways to Help Keep Your Skin Hydrated",
-    thumbnail: "https://images.unsplash.com/photo-1556229174-5e42a09e60f2?w=600",
+    thumbnail: "https://images.unsplash.com/photo-1552046122-03184de85e08?w=600", // Fixed broken image
     duration: "4:15"
   },
   {
@@ -253,79 +253,198 @@ export const videoContent = [
     title: "Common Cold Myths and the Facts Behind Them",
     thumbnail: "https://images.unsplash.com/photo-1584515933487-779824d29309?w=600",
     duration: "5:20"
+  },
+  {
+    id: 5,
+    title: "7 Simple and Tasty Ways to Use Sweet Potatoes",
+    thumbnail: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600", // Added 5th video for sidebar
+    duration: "6:10"
   }
 ];
 
-export const healthTools = [
+export const specialSectionData = [
+  {
+    id: 1,
+    tagline: "Breaking Barriers in Prostate Cancer Care",
+    title: "Prostate Cancer And Health Equity",
+    description: "Learn about prostate cancer disparities in Black men and how screening, access to care, and advocacy can make a difference.",
+    // Working Image for Healthcare/Doctor
+    image: "https://images.pexels.com/photos/4225880/pexels-photo-4225880.jpeg?auto=compress&cs=tinysrgb&w=800",
+    link: "/special/prostate-cancer"
+  },
+  {
+    id: 2,
+    tagline: "Introducing embody",
+    title: "Healthy Habits Built For Every Body",
+    description: "Join a community that understands your journey. Discover science-backed, whole-body health with support at its core.",
+    // Working Image for Yoga/Habits
+    image: "https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?auto=compress&cs=tinysrgb&w=800",
+    link: "/special/embody"
+  },
+  {
+    id: 3,
+    tagline: "Living Well on Dialysis",
+    title: "Health Tips For Dialysis And Chronic Kidney Disease",
+    description: "Access nutrition, exercise, and lifestyle support for managing chronic kidney disease on dialysis.",
+    // Working Image for Medical Consultation
+    image: "https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg?auto=compress&cs=tinysrgb&w=800",
+    link: "/special/dialysis-tips"
+  }
+];
+
+export const trendingTopics = [
+  "Adult Vaccines", "Back Pain", "Chronic Pain", "Digestive Problems", 
+  "Hemorrhoids", "Hypertension", "Nutrition And Healthy Eating", 
+  "Skin Problems And Treatments", "Uterine Cervical Cancer", "Vitamins And Supplements"
+];
+
+export const featuredStories = [
+  {
+    id: 1,
+    title: "How Apple Cider Vinegar Might Support Liver Health",
+    description: "Apple cider vinegar shows promise in supporting metabolic associated fatty liver disease (MAFLD). Here's what you need to know.",
+    image: "https://images.pexels.com/photos/4505166/pexels-photo-4505166.jpeg?auto=compress&cs=tinysrgb&w=800",
+    link: "/featured/liver-health"
+  },
+  {
+    id: 2,
+    title: "Perimenopause And Hormone Therapy: A Doctor Shares Her Story",
+    description: "One doctor shares her personal journey through the 'chaos' of perimenopause symptoms and what she learned about treatment options.",
+    // Fixed 2nd Image Link
+    image: "https://images.pexels.com/photos/5722159/pexels-photo-5722159.jpeg?auto=compress&cs=tinysrgb&w=800",
+    link: "/featured/perimenopause-journey"
+  },
+  {
+    id: 3,
+    title: "Why Delaying Cancer Screenings Could Be Risky",
+    description: "In this podcast, a doctor shares why cancer screenings get skipped, which ones matter most, and how to protect your health.",
+    image: "https://images.pexels.com/photos/4225881/pexels-photo-4225881.jpeg?auto=compress&cs=tinysrgb&w=800",
+    link: "/featured/cancer-screenings"
+  }
+];
+
+export const contributorsData = [
+  {
+    id: 1,
+    name: "Ashley Walker",
+    role: "Caregiver since 2021",
+    category: "Atopic Dermatitis",
+    title: "What a Month of Eating Clean Taught Me About My Children's Eczema",
+    image: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=800",
+    link: "/contributor/ashley-walker"
+  },
+  {
+    id: 2,
+    name: "David Spero",
+    role: "Diagnóstico en 1989",
+    category: "Esclerosis Múltiple",
+    title: "Cerrar los ojos sana",
+    // Fixed image with clear face
+    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800",
+    link: "/contributor/david-spero"
+  },
+  {
+    id: 3,
+    name: "Elizabeth Ward, RD, MS",
+    role: "Registered dietitian nutritionist",
+    category: "Digestive Health",
+    title: "9 Tips to Get Your Gut Back on Track",
+    image: "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=800",
+    link: "/contributor/elizabeth-ward"
+  },
+  {
+    id: 4,
+    name: "Yi Min Teo",
+    role: "Registered dietitian",
+    category: "Digestive Health",
+    title: "What Is Small Intestinal Bacterial Overgrowth (SIBO) and Do I Have It?",
+    image: "https://images.pexels.com/photos/1181682/pexels-photo-1181682.jpeg?auto=compress&cs=tinysrgb&w=800",
+    link: "/contributor/yi-min-teo"
+  }
+];
+
+export const mainTools = [
   {
     id: 1,
     title: "BMI Calculator",
-    description: "Calculate your Body Mass Index",
-    icon: "Calculator",
+    image: "https://img.freepik.com/free-vector/bmi-calculator-concept-illustration_114360-10142.jpg",
     url: "/tools/bmi-calculator"
   },
   {
     id: 2,
-    title: "Symptom Checker",
-    description: "Check your symptoms",
-    icon: "Stethoscope",
-    url: "/tools/symptom-checker"
-  },
-  {
-    id: 3,
-    title: "Pill Identifier",
-    description: "Identify your medication",
-    icon: "Pill",
-    url: "/tools/pill-identifier"
-  },
-  {
-    id: 4,
-    title: "Drug Interaction Checker",
-    description: "Check drug interactions",
-    icon: "AlertTriangle",
-    url: "/tools/drug-interaction"
-  },
-  {
-    id: 5,
     title: "Ovulation Calculator",
-    description: "Track your ovulation",
-    icon: "Calendar",
+    image: "https://img.freepik.com/free-vector/menstrual-cycle-concept-illustration_114360-9849.jpg",
     url: "/tools/ovulation-calculator"
   },
   {
-    id: 6,
-    title: "Cold and Flu Map",
-    description: "Track outbreaks in your area",
-    icon: "Map",
+    id: 3,
+    title: "Cold And Flu Map",
+    image: "https://img.freepik.com/free-vector/map-concept-illustration_114360-349.jpg",
     url: "/tools/cold-flu-map"
+  },
+  {
+    id: 4,
+    title: "Pill Identifier",
+    image: "https://img.freepik.com/free-vector/pharmacist-concept-illustration_114360-2647.jpg",
+    url: "/tools/pill-identifier"
+  },
+  {
+    id: 5,
+    title: "Drugs Interaction Checker",
+    image: "https://img.freepik.com/free-vector/online-pharmacy-concept-illustration_114360-2544.jpg",
+    url: "/tools/drug-interaction"
   }
 ];
 
+export const secondaryTools = [
+  { name: "Cat Health Tool", url: "#" },
+  { name: "Dog Health Tool", url: "#" },
+  { name: "Due Date Calculator", url: "#" },
+  { name: "Fitness Calorie Counter", url: "#" },
+  { name: "Food Calorie Counter", url: "#" },
+  { name: "Visual Pregnancy Timeline", url: "#" }
+];
+
 export const conditions = [
-  { name: "ADD/ADHD", url: "/conditions/add-adhd", description: "Attention-Deficit/Hyperactivity Disorder" },
-  { name: "Allergies", url: "/conditions/allergies", description: "Immune system reactions to substances" },
-  { name: "Alzheimer's", url: "/conditions/alzheimers", description: "Progressive brain disorder affecting memory" },
-  { name: "Anxiety Disorders", url: "/conditions/anxiety", description: "Mental health conditions causing excessive worry" },
+  { name: "ADD/ADHD - Childhood", url: "/conditions/add-adhd-childhood", description: "Managing attention in children" },
+  { name: "ADHD", url: "/conditions/adhd", description: "Attention-Deficit/Hyperactivity Disorder" },
+  { name: "Allergies", url: "/conditions/allergies", description: "Immune reactions to allergens" },
+  { name: "Alzheimer's", url: "/conditions/alzheimers", description: "Progressive memory loss disorder" },
+  { name: "Ankylosing Spondylitis", url: "/conditions/ankylosing-spondylitis", description: "Inflammatory arthritis affecting the spine" },
+  { name: "Anxiety Disorders", url: "/conditions/anxiety", description: "Conditions causing excessive worry" },
   { name: "Arthritis", url: "/conditions/arthritis", description: "Joint inflammation and pain" },
   { name: "Asthma", url: "/conditions/asthma", description: "Chronic respiratory condition" },
-  { name: "Back Pain", url: "/conditions/back-pain", description: "Discomfort in the spine or back muscles" },
-  { name: "Cancer", url: "/conditions/cancer", description: "Abnormal cell growth" },
-  { name: "Cholesterol", url: "/conditions/cholesterol", description: "Fat-like substance in blood" },
-  { name: "COPD", url: "/conditions/copd", description: "Chronic Obstructive Pulmonary Disease" },
-  { name: "Coronavirus", url: "/conditions/coronavirus", description: "COVID-19 information and resources" },
-  { name: "Depression", url: "/conditions/depression", description: "Persistent feeling of sadness" },
-  { name: "Diabetes", url: "/conditions/diabetes", description: "High blood sugar levels" },
-  { name: "Eye Health", url: "/conditions/eye-health", description: "Vision and eye condition information" },
+  { name: "Back Pain", url: "/conditions/back-pain", description: "Discomfort in the spine or muscles" },
+  { name: "Cancer", url: "/conditions/cancer", description: "Abnormal cell growth information" },
+  { name: "Children's Vaccines", url: "/conditions/vaccines", description: "Immunization guides for kids" },
+  { name: "Cholesterol", url: "/conditions/cholesterol", description: "Managing blood fat levels" },
+  { name: "Cold, Flu, & Cough", url: "/conditions/cold-flu", description: "Common viral infection relief" },
+  { name: "COPD", url: "/conditions/copd", description: "Chronic obstructive pulmonary disease" },
+  { name: "Coronavirus", url: "/conditions/coronavirus", description: "COVID-19 resources and news" },
+  { name: "Depression", url: "/conditions/depression", description: "Clinical sadness and mental health" },
+  { name: "Diabetes", url: "/conditions/diabetes", description: "Managing high blood sugar" },
+  { name: "Digestive Disorders", url: "/conditions/digestive", description: "Gastrointestinal health issues" },
+  { name: "Eye Health", url: "/conditions/eye-health", description: "Vision and eye care" },
+  { name: "Health & Balance", url: "/conditions/health-balance", description: "Wellness and physical stability" },
   { name: "Heart Health", url: "/conditions/heart-health", description: "Cardiovascular wellness" },
-  { name: "Hypertension", url: "/conditions/hypertension", description: "High blood pressure" },
+  { name: "Heartburn/GERD", url: "/conditions/heartburn", description: "Acid reflux management" },
+  { name: "Hypertension", url: "/conditions/hypertension", description: "Managing high blood pressure" },
+  { name: "Lung Cancer", url: "/conditions/lung-cancer", description: "Pulmonary oncology information" },
   { name: "Mental Health", url: "/conditions/mental-health", description: "Psychological wellbeing" },
   { name: "Migraines", url: "/conditions/migraines", description: "Severe recurring headaches" },
-  { name: "Multiple Sclerosis", url: "/conditions/ms", description: "Autoimmune disease affecting nerves" },
+  { name: "Multiple Myeloma", url: "/conditions/multiple-myeloma", description: "Plasma cell cancer information" },
+  { name: "Multiple Sclerosis", url: "/conditions/ms", description: "Nervous system autoimmune disease" },
+  { name: "Oral Care", url: "/conditions/oral-care", description: "Dental and mouth health" },
+  { name: "Orthopedics", url: "/conditions/orthopedics", description: "Bone and joint care" },
+  { name: "Osteoporosis", url: "/conditions/osteoporosis", description: "Conditions causing weak bones" },
+  { name: "Ovarian Cancer", url: "/conditions/ovarian-cancer", description: "Ovarian oncology guide" },
+  { name: "Prostate Cancer", url: "/conditions/prostate-cancer", description: "Men's oncology health" },
   { name: "Psoriasis", url: "/conditions/psoriasis", description: "Skin condition with scaly patches" },
   { name: "Rheumatoid Arthritis", url: "/conditions/rheumatoid-arthritis", description: "Autoimmune joint disease" },
-  { name: "Sleep Apnea", url: "/conditions/sleep-apnea", description: "Breathing interruptions during sleep" },
-  { name: "Stroke", url: "/conditions/stroke", description: "Brain blood supply interruption" },
-  { name: "Thyroid Disorders", url: "/conditions/thyroid", description: "Thyroid gland problems" }
+  { name: "Schizophrenia", url: "/conditions/schizophrenia", description: "Complex mental health disorder" },
+  { name: "Sexual Conditions", url: "/conditions/sexual-health", description: "Reproductive health and issues" },
+  { name: "Skin Problems", url: "/conditions/skin-problems", description: "Dermatological health" },
+  { name: "Sleep Disorders", url: "/conditions/sleep-disorders", description: "Managing insomnia and apnea" }
 ];
 
 // User profiles for authentication demo

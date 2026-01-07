@@ -1,0 +1,80 @@
+/* NAVBAR */
+.navbar {
+  position: relative;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.nav-inner {
+  display: flex;
+  gap: 24px;
+  padding: 16px 32px;
+}
+
+.nav-inner span {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* MEGA MENU */
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+
+  /* 🔥 KEY FIX */
+  overflow-x: hidden; /* ❌ horizontal scroll band */
+}
+
+/* CONTENT */
+.mega-menu-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  padding: 24px 32px;
+
+  /* 🔥 WebMD behavior */
+  max-height: 420px;
+  overflow-y: auto; /* scroll ONLY if needed */
+}
+
+/* COLUMN */
+.mega-menu-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  /* ❌ no fixed height */
+}
+
+/* HEADINGS */
+.mega-menu-column h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* LINKS */
+.mega-menu-column a {
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+}
+
+.mega-menu-column a:hover {
+  color: #0a8f7a;
+}
+
+/* SCROLLBAR (optional WebMD polish) */
+.mega-menu-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mega-menu-content::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
