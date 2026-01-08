@@ -41,25 +41,26 @@ const Home = () => {
       {/* Hero Section with Featured Articles */}
       <section className="py-12 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Heading - Normal clean style */}
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 tracking-widest uppercase border-b-2 border-teal-600 w-fit pb-1  ">
-            Today's Top Stories
+          {/* Section Heading */}
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 tracking-widest uppercase border-b-2 border-teal-600 w-fit pb-1">
+            Big Stories Today
           </h2>
 
           <div className="flex flex-col gap-12">
-            {/* UP: Main Story - Balanced and Normal Text */}
+            {/* UP: Main Story - Animation Fixed */}
             <div className="w-full">
               <Link href={`/article/${mainStory.id}`} className="group block">
                 <div className="flex flex-col lg:flex-row gap-8 items-start">
-                  {/* Image Section */}
+                  {/* Image Section - Scale animation added */}
                   <div className="w-full lg:w-[60%] overflow-hidden rounded-sm">
                     <img
                       src={mainStory.image}
                       alt={mainStory.title}
-                      className="w-full h-[300px] md:h-[380px] object-cover transition-opacity duration-300 group-hover:opacity-90"
+                      /* Yahan transition-transform aur scale add kiya hai */
+                      className="w-full h-[300px] md:h-[380px] object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                  {/* Text Section - Normal font weights */}
+                  {/* Text Section */}
                   <div className="w-full lg:w-[40%] space-y-4 pt-1">
                     <h1 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight group-hover:text-teal-600 transition-colors">
                       {mainStory.title}
@@ -142,7 +143,6 @@ const Home = () => {
       </section>
 
       {/* Health Topics */}
-      {/* Top Health Topics Section - Modern Arrow Style */}
       <section className="py-16 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header with View All */}
@@ -166,14 +166,12 @@ const Home = () => {
                 href={`/topics/${topic.toLowerCase().replace(/\s+/g, "-")}`}
                 className="group flex items-center p-4 bg-gray-50/50 hover:bg-teal-50 border border-gray-100 hover:border-teal-200 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md"
               >
-                {/* MediLAB Theme Arrow */}
-                <div className="flex items-center justify-center w-6 h-6 mr-3 rounded-full bg-white border border-gray-100 group-hover:border-teal-300 group-hover:bg-teal-600 transition-all duration-300">
-                  <span className="text-teal-600 group-hover:text-white text-sm font-bold transition-colors">
-                    →
-                  </span>
-                </div>
+                {/* Simple Teal Arrow - No Circle for better alignment */}
+                <span className="text-teal-600 mr-3 text-lg font-bold transition-transform group-hover:translate-x-1">
+                  →
+                </span>
 
-                {/* Topic Name */}
+                {/* Topic Name - Teal Hover Effect */}
                 <span className="text-[15px] font-bold text-gray-700 group-hover:text-teal-700 transition-colors">
                   {topic}
                 </span>
@@ -184,7 +182,6 @@ const Home = () => {
       </section>
 
       {/* Latest News & Articles */}
-      {/* Latest News & Articles - WebMD Health News Style */}
       <section className="py-16 bg-gray-50 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header with Large Heading and View All */}
@@ -440,10 +437,9 @@ const Home = () => {
       </section>
 
       {/* PATIENT AND EXPERT CONTRIBUTORS SECTION */}
-      {/* PATIENT AND EXPERT CONTRIBUTORS SECTION - Balanced Spacing */}
       <section className="py-16 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Heading Section - Bold MediLAB Style */}
+          {/* Heading Section - Bold Dev Style */}
           <div className="flex justify-between items-baseline mb-10 pb-4 border-b border-gray-100">
             <h2 className="text-3xl font-black text-gray-900 tracking-tight">
               Patient and Expert Contributors
@@ -504,7 +500,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Health Tools */}
       {/* TOOLS, TRACKERS & CALCULATORS SECTION */}
       <section className="py-16 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -538,12 +533,14 @@ const Home = () => {
           </div>
 
           {/* Bottom Row: Secondary Pill Buttons */}
+          {/* SECONDARY TOOLS - Hover Style Matched with Trending Topics */}
           <div className="flex flex-wrap justify-center gap-4 pt-10 border-t border-gray-100">
             {secondaryTools.map((tool, index) => (
               <Link
                 key={index}
                 href={tool.url}
-                className="px-6 py-2 bg-gray-50 hover:bg-teal-50 text-[13px] font-bold text-teal-800 border border-gray-100 hover:border-teal-200 rounded-full transition-all shadow-sm"
+                /* Hover effects updated to match Trending Topics (bg-teal-600 & text-white) */
+                className="px-6 py-2 bg-gray-50/50 hover:bg-teal-600 text-[13px] font-bold text-gray-700 hover:text-white border border-gray-100 hover:border-teal-600 rounded-full transition-all shadow-sm"
               >
                 {tool.name}
               </Link>
@@ -602,41 +599,41 @@ const Home = () => {
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-16 bg-gradient-to-r from-teal-600 to-teal-700">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Free MediLab Newsletters
-          </h2>
-          <p className="text-teal-100 mb-8 text-lg">
-            Doctor-approved health and wellness information delivered to your
-            inbox
-          </p>
-          <form
-            onSubmit={handleNewsletterSubmit}
-            className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto"
-          >
-            <Input
-              type="email"
-              placeholder="Enter your email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="flex-1 px-6 py-3 rounded-lg text-lg"
-            />
-            <Button
-              type="submit"
-              size="lg"
-              className="bg-white text-teal-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold"
-            >
-              Subscribe
-            </Button>
-          </form>
-          <p className="text-xs text-teal-100 mt-4">
-            By clicking Subscribe, I agree to the MediLab Terms & Conditions and
-            Privacy Policy
-          </p>
-        </div>
-      </section>
+<section className="py-16 bg-[#0d9488]"> 
+  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 className="text-3xl font-black text-white mb-3 tracking-tight">
+      Free Dev Newsletters
+    </h2>
+    <p className="text-white/90 mb-8 text-lg font-medium">
+      Doctor-approved health and wellness information delivered to your inbox
+    </p>
+    
+    <form
+      onSubmit={handleNewsletterSubmit}
+      className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto"
+    >
+      <input
+        type="email"
+        placeholder="Enter your email address"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        /* FIXED: Added explicit text-gray-900 and placeholder-gray-500 */
+        className="flex-1 px-6 py-3 rounded-md text-gray-900 placeholder:text-gray-500 bg-white border-none outline-none focus:ring-2 focus:ring-teal-300 text-lg shadow-inner"
+      />
+      <button
+        type="submit"
+        className="bg-white text-[#0d9488] hover:bg-teal-50 px-10 py-3 rounded-md font-bold transition-colors shadow-md"
+      >
+        Subscribe
+      </button>
+    </form>
+    
+    <p className="text-[11px] text-white/80 mt-6 font-medium">
+      By clicking Subscribe, I agree to the MediLab Terms & Conditions and Privacy Policy
+    </p>
+  </div>
+</section>
 
       {/* Find a Doctor */}
       <section className="py-12 bg-gray-50">
@@ -696,7 +693,7 @@ const Home = () => {
       {/* Browse All Conditions Section - WebMD Style */}
 
       {/* Conditions Grid Container */}
-      {/* Health A - Z Section - MediLAB Teal Theme */}
+      {/* Health A - Z Section - Dev Teal Theme */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header with View All - Teal Underline */}
@@ -724,7 +721,7 @@ const Home = () => {
                     href={condition.url}
                     className="flex items-center group py-4 transition-all"
                   >
-                    {/* MediLAB Teal Arrow */}
+                    {/* Dev Teal Arrow */}
                     <span className="text-teal-600 mr-3 font-bold text-lg group-hover:translate-x-1 transition-transform">
                       →
                     </span>

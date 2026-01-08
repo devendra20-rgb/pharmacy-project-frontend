@@ -1,4 +1,4 @@
-// Mock data for MediLab clone - Comprehensive Dummy Data
+// Mock data for Dev clone - Comprehensive Dummy Data
 
 export const featuredArticles = [
   {
@@ -451,7 +451,7 @@ export const conditions = [
 export const userProfiles = [
   {
     id: 1,
-    email: "demo@MediLab.com",
+    email: "demo@Dev.com",
     name: "Demo User",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200",
     joinedDate: "2024-01-15",

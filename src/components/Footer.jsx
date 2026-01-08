@@ -38,7 +38,7 @@ const Footer = () => {
     {
       title: 'About',
       links: [
-        { name: 'About MediLAB', url: '/about' },
+        { name: 'About Dev', url: '/about' },
         { name: 'Editorial Policy', url: '/editorial-policy' },
         { name: 'Contact Us', url: '/contact' },
         { name: 'Advertise', url: '/advertise' },
@@ -60,7 +60,7 @@ const Footer = () => {
               <svg className="w-8 h-8 text-teal-500" viewBox="0 0 40 40" fill="currentColor">
                 <path d="M20 4L4 12v8c0 10 6.4 19.4 16 22 9.6-2.6 16-12 16-22v-8L20 4zm-2 26l-6-6 1.4-1.4L18 27.2l8.6-8.6L28 20l-10 10z"/>
               </svg>
-              <span className="text-xl font-bold text-white">MediLAB</span>
+              <span className="text-xl font-bold text-white">Dev</span>
             </div>
             <div className="flex items-center space-x-6">
               <a href="#" className="hover:text-teal-400 transition-colors">
@@ -87,7 +87,7 @@ const Footer = () => {
           <div className="max-w-3xl">
             <h4 className="text-white font-semibold mb-3">Our Content Is Different Because We Set the Bar Higher</h4>
             <p className="text-sm leading-relaxed mb-4">
-              As a leader in digital health publishing for more than 25 years, MediLAB strives to maintain the most comprehensive and reliable source of health and medical information on the internet.
+              As a leader in digital health publishing for more than 25 years, Dev strives to maintain the most comprehensive and reliable source of health and medical information on the internet.
             </p>
             <div className="grid md:grid-cols-3 gap-4 text-sm">
               <div>
@@ -132,7 +132,7 @@ const Footer = () => {
           </div>
           <div className="mt-4 text-xs text-center md:text-left">
             <p>
-              Medilab does not provide medical advice, diagnosis or treatment. See additional information.
+              Dev does not provide medical advice, diagnosis or treatment. See additional information.
             </p>
           </div>
         </div>
