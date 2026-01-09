@@ -190,13 +190,13 @@ const Header = () => {
               </div>
             ))}
             <Link
-              href="#"
+              href="symptom-checker"
               className="text-[14.5px] font-bold text-gray-800 hover:text-teal-700 h-full flex items-center"
             >
               Symptom Checker
             </Link>
             <Link
-              href="#"
+              href="find-doctor"
               className="text-[14.5px] font-bold text-gray-800 hover:text-teal-700 h-full flex items-center"
             >
               Find a Doctor
@@ -254,7 +254,7 @@ const Header = () => {
               <div className="flex items-center space-x-8">
                 {/* 2. Log In Link with slightly increased font weight */}
                 <Link
-                  href="#"
+                  href="login"
                   className="hidden lg:block text-[15px] font-bold text-gray-800 hover:text-teal-700 transition-colors"
                 >
                   Log In
