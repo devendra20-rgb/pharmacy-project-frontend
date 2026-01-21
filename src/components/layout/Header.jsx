@@ -1,16 +1,38 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Search, Menu, X, ChevronDown } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
+import { getAllConditions } from "../../lib/api/conditions"; // Import API function
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [conditions, setConditions] = useState([]); // State for fetched conditions
+  const [conditionsLoading, setConditionsLoading] = useState(true); // Loading state
   const router = useRouter();
+
+  useEffect(() => {
+    // Fetch conditions for dropdown
+    const fetchConditions = async () => {
+      try {
+        setConditionsLoading(true);
+        const data = await getAllConditions();
+        // Sort alphabetically by name
+        const sortedConditions = data.sort((a, b) => a.name.localeCompare(b.name));
+        setConditions(sortedConditions);
+      } catch (error) {
+        console.error("Failed to fetch conditions:", error);
+      } finally {
+        setConditionsLoading(false);
+      }
+    };
+
+    fetchConditions();
+  }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -20,45 +42,21 @@ const Header = () => {
     }
   };
 
-  const conditionsData = [
-    [
-      { name: "ADD/ADHD", href: "#" },
-      { name: "Allergies", href: "#" },
-      { name: "Arthritis", href: "#" },
-      { name: "Atrial fibrillation", href: "#" },
-      { name: "Breast Cancer", href: "#" },
-      { name: "Cancer", href: "#" },
-      { name: "Crohn's Disease", href: "#" },
-    ],
-    [
-      { name: "Depression", href: "#" },
-      { name: "Diabetes", href: "#" },
-      { name: "DVT", href: "#" },
-      { name: "Eczema", href: "#" },
-      { name: "Eye Health", href: "#" },
-      { name: "Heart Disease", href: "#" },
-      { name: "HIV & AIDS", href: "#" },
-    ],
-    [
-      { name: "Hypertension", href: "#" },
-      { name: "Lung Disease", href: "#" },
-      { name: "Lupus", href: "#" },
-      { name: "Mental Health", href: "#" },
-      { name: "Multiple Sclerosis", href: "#" },
-      { name: "Migraine", href: "#" },
-      { name: "Pain Management", href: "#" },
-    ],
-    [
-      { name: "Psoriasis", href: "#" },
-      { name: "Psoriatic Arthritis", href: "#" },
-      { name: "Rheumatoid Arthritis", href: "#" },
-      { name: "Sexual Conditions", href: "#" },
-      { name: "Skin Problems", href: "#" },
-      { name: "Sleep Disorders", href: "#" },
-      { name: "Ulcerative Colitis", href: "#" },
-      { name: "View All Conditions", href: "#", isLink: true },
-    ],
-  ];
+  // Divide conditions into 4 columns (balanced)
+  const divideIntoColumns = (items, numColumns = 4) => {
+    const columns = Array.from({ length: numColumns }, () => []);
+    items.forEach((item, idx) => columns[idx % numColumns].push(item));
+    // Add "View All" to the last column
+    columns[numColumns - 1].push({ name: "View All", href: "/conditions", isLink: true });
+    return columns;
+  };
+
+  const conditionsData = conditionsLoading ? [] : divideIntoColumns(
+    conditions.map((condition) => ({
+      name: condition.name,
+      href: `/conditions/${condition.slug}`,
+    }))
+  );
 
   const menuItems = [
     { title: "Conditions", items: conditionsData, isGrid: true },
@@ -131,14 +129,14 @@ const Header = () => {
               {column.map((item, idx) => (
                 <Link
                   key={idx}
-                  href="#"
+                  href={item.href || "#"}
                   className={`text-[13px] py-1.5 px-1 hover:bg-teal-50 hover:text-teal-700 transition-all border-b border-gray-100 last:border-0 ${
                     item.isLink
                       ? "text-teal-700 font-extrabold mt-4 border-none"
                       : "text-gray-700 font-medium"
                   }`}
                 >
-                  {typeof item === "string" ? item : item.name}
+                  {item.name || item}
                   {item.isLink && <span className="ml-1 text-lg">→</span>}
                 </Link>
               ))}
@@ -164,7 +162,7 @@ const Header = () => {
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50 h-20 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">,
         {/* Left: Logo & Nav */}
         <div className="flex items-center h-full">
           <Link href="/" className="mr-10 flex items-center">
